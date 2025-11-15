@@ -1,0 +1,27 @@
+experiment_name: "unet_dice_experiment"
+
+data:
+  data_dir: "data"
+  img_size: 256
+  batch_size: 8
+  num_workers: 4
+
+model:
+  name: "unet"
+  encoder: "resnet101"
+  encoder_weights: "imagenet"
+  num_classes: 1
+
+training:
+  epochs: 50
+  learning_rate: 0.0001
+  loss: "dice"
+  optimizer: "adam"
+  scheduler: "cosine"
+
+augmentation:
+  horizontal_flip: true
+  vertical_flip: true
+  rotation_range: 10.0
+  brightness_range: [0.1, 0.1]
+  contrast_range: [0.1, 0.1]
